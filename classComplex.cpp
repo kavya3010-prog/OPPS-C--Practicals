@@ -3,42 +3,50 @@ using namespace std;
 
 class Complex
 {
-    int real, img;
+    float real, imag;
 
 public:
     void getData()
     {
-        cout << "Enter Real and Imaginary Part: ";
-        cin >> real >> img;
+        cout << "Enter Real Part: ";
+        cin >> real;
+
+        cout << "Enter Imaginary Part: ";
+        cin >> imag;
     }
 
-    Complex add(Complex c)
+    void printData()
     {
-        Complex temp;
-        temp.real = real + c.real;
-        temp.img = img + c.img;
-        return temp;
+        cout << real << " + " << imag << "i" << endl;
     }
 
-    void display()
+    void addData(Complex c1, Complex c2)
     {
-        cout << "Sum = " << real << " + " << img << "i";
+        real = c1.real + c2.real;
+        imag = c1.imag + c2.imag;
     }
 };
 
 int main()
 {
-    Complex c1, c2, c3;
+    Complex C1, C2, C3;
 
-    cout << "Enter First Complex Number\n";
-    c1.getData();
+    cout << "Enter First Complex Number:" << endl;
+    C1.getData();
 
-    cout << "Enter Second Complex Number\n";
-    c2.getData();
+    cout << "\nEnter Second Complex Number:" << endl;
+    C2.getData();
 
-    c3 = c1.add(c2);
+    C3.addData(C1, C2);
 
-    c3.display();
+    cout << "\nFirst Complex Number: ";
+    C1.printData();
+
+    cout << "Second Complex Number: ";
+    C2.printData();
+
+    cout << "Sum of Two Complex Numbers: ";
+    C3.printData();
 
     return 0;
 }
