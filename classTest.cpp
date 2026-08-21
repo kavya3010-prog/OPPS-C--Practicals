@@ -4,41 +4,44 @@ using namespace std;
 class Test
 {
 private:
-    int mark;
+    float mark;
     float spi;
 
 public:
-    void setData()
-    {
-        cout << "Enter Mark: ";
-        cin >> mark;
-
-        cout << "Enter SPI: ";
-        cin >> spi;
-    }
-
-    void DisplayData()
-    {
-        cout << "Mark = " << mark << endl;
-        cout << "SPI = " << spi << endl;
-    }
+    void setdata();
+    void DisplayData();
 };
+
+void Test::setdata()
+{
+    cout << "Enter Mark: ";
+    cin >> mark;
+
+    cout << "Enter SPI: ";
+    cin >> spi;
+}
+
+void Test::DisplayData()
+{
+    cout << "Mark = " << mark << endl;
+    cout << "SPI = " << spi << endl;
+}
 
 int main()
 {
-    Test o1, o2;
+    Test t1, t2;
 
     cout << "Enter Details of Student 1" << endl;
-    o1.setData();
+    t1.setdata();
 
     cout << "\nEnter Details of Student 2" << endl;
-    o2.setData();
+    t2.setdata();
 
     cout << "\nStudent 1 Details" << endl;
-    o1.DisplayData();
+    t1.DisplayData();
 
     cout << "\nStudent 2 Details" << endl;
-    o2.DisplayData();
+    t2.DisplayData();
 
     return 0;
 }
