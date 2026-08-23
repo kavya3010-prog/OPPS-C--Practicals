@@ -1,62 +1,79 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
 class Item
 {
-private:
-    int item_code, item_unit;
-    float item_price;
-    string item_name;
+    int itemid;
+    string itemname;
+    float itemprice;
 
 public:
+
+    // Function to take input
     void getdata()
     {
-        cout << "Enter Item Code: ";
-        cin >> item_code;
+        cout << "Enter Item ID: ";
+        cin >> itemid;
 
         cout << "Enter Item Name: ";
-        cin >> item_name;
+        cin >> itemname;
 
         cout << "Enter Item Price: ";
-        cin >> item_price;
-
-        cout << "Enter Item Unit: ";
-        cin >> item_unit;
+        cin >> itemprice;
     }
 
+    // Function to display data
     void display()
     {
-        if (item_price > 100 && item_price < 200)
-        {
-            cout << "\nItem Code : " << item_code << endl;
-            cout << "Item Name : " << item_name << endl;
-            cout << "Item Price: " << item_price << endl;
-            cout << "Item Unit : " << item_unit << endl;
-        }
+        cout << "\nItem ID    : " << itemid;
+        cout << "\nItem Name  : " << itemname;
+        cout << "\nItem Price : " << itemprice << endl;
+    }
+
+    // Function to return price
+    float getprice()
+    {
+        return itemprice;
     }
 };
 
 int main()
 {
+    Item obj[10];
     int n;
+    float sum = 0;
 
-    cout << "Enter Number of Items: ";
+    cout << "Enter number of items: ";
     cin >> n;
 
-    Item i[n];
-
-    for (int j = 0; j < n; j++)
+    // Input item details
+    for(int i = 0; i < n; i++)
     {
-        cout << "\nEnter Details of Item " << j + 1 << endl;
-        i[j].getdata();
+        cout << "\nEnter details of Item " << i + 1 << ":\n";
+        obj[i].getdata();
     }
 
-    cout << "\nItems with Price > 100 and < 200\n";
-
-    for (int j = 0; j < n; j++)
+    // Calculate total price
+    for(int i = 0; i < n; i++)
     {
-        i[j].display();
+        sum = sum + obj[i].getprice();
+    }
+
+    cout << "\nTotal Price = " << sum << endl;
+
+    // Display all item information if sum > 500
+    if(sum > 500)
+    {
+        cout << "\nAll Item Information:\n";
+
+        for(int i = 0; i < n; i++)
+        {
+            obj[i].display();
+        }
+    }
+    else
+    {
+        cout << "\nTotal price is not greater than 500.";
     }
 
     return 0;
