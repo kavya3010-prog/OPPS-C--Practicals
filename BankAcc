@@ -1,0 +1,83 @@
+#include <iostream>
+using namespace std;
+
+class BankAccount
+{
+protected:
+    int accNo;
+    float balance;
+
+public:
+    BankAccount(int a, float b)
+    {
+        accNo = a;
+        balance = b;
+    }
+
+    virtual void calculateInterest()
+    {
+        cout << "Interest: " << balance * 0.02 << endl;
+    }
+};
+
+class SavingAccount : public BankAccount
+{
+public:
+    SavingAccount(int a, float b) : BankAccount(a, b)
+    {
+    }
+
+    void calculateInterest()
+    {
+        cout << "Saving Account Interest: "
+             << balance * 0.04 << endl;
+    }
+};
+
+class CurrentAccount : public BankAccount
+{
+public:
+    CurrentAccount(int a, float b) : BankAccount(a, b)
+    {
+    }
+
+    void calculateInterest()
+    {
+        cout << "Current Account Interest: "
+             << balance * 0.02 << endl;
+    }
+};
+
+int main()
+{
+    int accNo;
+    float balance;
+
+    cout << "Enter Saving Account Number: ";
+    cin >> accNo;
+
+    cout << "Enter Saving Account Balance: ";
+    cin >> balance;
+
+    SavingAccount s(accNo, balance);
+
+    cout << "\nEnter Current Account Number: ";
+    cin >> accNo;
+
+    cout << "Enter Current Account Balance: ";
+    cin >> balance;
+
+    CurrentAccount c(accNo, balance);
+
+    BankAccount *ptr;
+
+    cout << "\nSaving Account:\n";
+    ptr = &s;
+    ptr->calculateInterest();
+
+    cout << "\nCurrent Account:\n";
+    ptr = &c;
+    ptr->calculateInterest();
+
+    return 0;
+}
