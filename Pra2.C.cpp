@@ -1,44 +1,31 @@
-#include <iostream>
-#include <cmath>
+#include<iostream>
+#include<cmath>
 using namespace std;
 
-class Triangle
-{
+class Area{
 public:
-    void area(float b, float h)      // Right angle triangle
+    void area(float b, float h)
     {
-        cout << "Area = " << 0.5 * b * h << endl;
+        cout<<"Area of Right Angle Triangle ="<<0.5*b*h<<endl;
     }
 
-    void area(float s)               // Equilateral triangle
+    void area(float a)
     {
-        cout << "Area = " << (1.732 * s * s) / 4 << endl;
+        cout<<"Area of Equilateral triangle="<<(sqrt(3)/4)*a*a<<endl;
     }
-
-    void area(double s, double b)    // Isosceles triangle
+    void area(double equalSide, double base)
     {
-        double h = sqrt(s * s - (b * b) / 4);
-        cout << "Area = " << 0.5 * b * h << endl;
+        float height = sqrt(equalSide * equalSide - (base * base)/4);
+        cout<<"Area of Isosceles Triangle="<<0.5*base*height<<endl;
     }
 };
 
 int main()
 {
-    Triangle t;
-    float b, h, side;
-    double s, base;
-
-    cout << "Enter base and height of right triangle: ";
-    cin >> b >> h;
-    t.area(b, h);
-
-    cout << "Enter side of equilateral triangle: ";
-    cin >> side;
-    t.area(side);
-
-    cout << "Enter equal side and base of isosceles triangle: ";
-    cin >> s >> base;
-    t.area(s, base);
-
+    Area obj;
+    obj.area(10.0f,5.0f);
+    obj.area(6.0f);
+    obj.area(5.0f,6.0f);
     return 0;
+
 }
